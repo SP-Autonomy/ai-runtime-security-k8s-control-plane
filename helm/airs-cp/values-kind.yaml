@@ -1,0 +1,28 @@
+# Placeholder values. You MUST align keys with your AIRS-CP Helm chart.
+# The goal is:
+# - service reachable in cluster
+# - config for Ollama backend (if AIRS supports it)
+# - observe mode default
+# - logs/evidence store enabled
+
+image:
+  repository: airs-cp
+  tag: "0.2.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+mode: observe
+
+# Example backend config (adjust to match your AIRS-CP)
+llmBackend:
+  provider: ollama
+  baseUrl: http://ollama.ai-app.svc.cluster.local:11434
+
+telemetry:
+  enabled: true
+
+auth:
+  enabled: false

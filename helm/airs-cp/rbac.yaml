@@ -1,0 +1,41 @@
+apiVersion: v1
+items:
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"annotations":{},"name":"airs-cp-role","namespace":"ai-security"},"rules":[{"apiGroups":[""],"resources":["pods","services","endpoints","configmaps"],"verbs":["get","list","watch"]}]}
+    name: airs-cp-role
+    namespace: ai-security
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - pods
+    - services
+    - endpoints
+    - configmaps
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"RoleBinding","metadata":{"annotations":{},"name":"airs-cp-rb","namespace":"ai-security"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"Role","name":"airs-cp-role"},"subjects":[{"kind":"ServiceAccount","name":"airs-cp","namespace":"ai-security"}]}
+    name: airs-cp-rb
+    namespace: ai-security
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: airs-cp-role
+  subjects:
+  - kind: ServiceAccount
+    name: airs-cp
+    namespace: ai-security
+kind: List
+metadata:
+  resourceVersion: ""

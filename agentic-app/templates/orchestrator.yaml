@@ -1,0 +1,7 @@
+env:
+  - name: AIRS_BASE_URL
+    value: "{{ .Values.airs.baseUrl }}"
+  - name: TOOLS_BASE_URL
+    value: "http://tools.ai-tools.svc.cluster.local:9000"
+  - name: MODEL
+    value: "{{ .Values.model.name }}"

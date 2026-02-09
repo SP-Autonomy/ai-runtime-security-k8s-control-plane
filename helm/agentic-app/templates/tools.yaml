@@ -1,0 +1,35 @@
+{{- if .Values.tools }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tools
+  namespace: ai-tools
+spec:
+  replicas: {{ .Values.tools.replicas | default 1 }}
+  selector:
+    matchLabels:
+      app: tools
+  template:
+    metadata:
+      labels:
+        app: tools
+    spec:
+      containers:
+        - name: tools
+          image: {{ .Values.tools.image }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tools
+  namespace: ai-tools
+spec:
+  selector:
+    app: tools
+  ports:
+    - port: 9000
+      targetPort: 9000
+{{- end }}

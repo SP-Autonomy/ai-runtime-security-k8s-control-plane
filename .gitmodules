@@ -1,0 +1,3 @@
+[submodule "vendor/airs-cp"]
+	path = vendor/airs-cp
+	url = https://github.com/SP-Autonomy/ai-runtime-security-control-plane.git

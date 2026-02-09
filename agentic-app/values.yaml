@@ -1,0 +1,17 @@
+orchestrator:
+  image: agentic-orchestrator:0.1
+  replicas: 1
+
+worker:
+  image: agentic-worker:0.1
+  replicas: 0   # temporarily disable until worker exists
+
+tools:
+  image: agentic-tools:0.1
+  replicas: 1
+
+airs:
+  baseUrl: http://airs-cp-gateway.ai-security.svc.cluster.local:8080
+
+model:
+  name: llama3.2:1b

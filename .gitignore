@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code
+.claude/
+
+# Local data and databases
+local-data/
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+logs/
+/tmp/
+
+# Environment variables with secrets
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.cache
+
+# Archives
+*.tar.gz
+*.zip
+*.rar
+
+# GitHub Push
+GITHUB_PUSH.md
+
+# Kubernetes local configs (if any)
+kubeconfig
+*.kubeconfig
+
+# Ollama models (too large)
+models/
+
+# Test outputs
+test-results/
+coverage/
+
