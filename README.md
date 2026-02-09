@@ -38,8 +38,8 @@ Most AI security solutions require sending data to external SaaS platforms, crea
 │ Local Gateway  │              │ Kubernetes Gateway │
 │ (On-Premises)  │              │ (Cloud/K8s)        │
 ├────────────────┤              ├────────────────────┤
-│ • Local Ollama │              │ • K8s-native pods  │
-│ • Private LLMs │              │ • Cluster Ollama   │
+│ • Local LLM     │              │ • K8s-native pods  │
+│ • Private LLMs │              │ • Cluster    │
 │ • Edge deploy  │              │ • Namespace-scoped │
 └────────────────┘              └────────────────────┘
         │                                  │
@@ -103,6 +103,29 @@ AIRS-CP operates as an **inline security proxy** that sits between your applicat
 - **Cohere, Mistral, and more**
 
 ---
+
+### Risk Mapping
+
+#### GOVERN
+- Policies as runtime configuration: mode (observe/enforce), detectors on/off, kill switch.
+- Evidence + dashboard support accountability and oversight.
+
+#### MAP
+- Provider abstraction + (planned) model inventory help map system context: which models, where hosted, which endpoints.
+
+#### MEASURE
+- PII + injection detectors + taint tracking generate measurable signals.
+- Metrics endpoint supports continuous measurement (requests, detections, blocks).
+
+#### MANAGE
+- Enforcement actions (block/redact/allow) + kill switch support risk treatment.
+- Evidence DB supports audits, incident triage, and control effectiveness tracking.
+
+#### OWASP
+- “Runtime guardrails at the inference boundary aligned to OWASP LLM01/06.”
+- “Continuous monitoring and evidence logging aligned to NIST AI RMF Measure/Manage.”
+- “Operational controls (observe/enforce, kill switch) that support EU AI Act-style logging, oversight, and incident response readiness.”
+- “Detection/containment at a choke point aligned to MITRE ATLAS prompt-driven attack patterns.”
 
 ## 🚀 Quick Start
 
@@ -278,7 +301,7 @@ airs-k8s-reference/
 ## 📈 Monitoring & Observability
 
 ### Dashboard Features
-- **Monitor** - Real-time threat detection across all gateways
+- **Monitor** - Real-time threat & anomaly detection across all gateways
 - **Evidence** - Detailed attack logs with risk scoring
 - **Inventory** - Track all AI models and providers
 - **Quick Actions** - Toggle modes, kill switch, policies
@@ -308,12 +331,6 @@ This project is licensed under the Apache License 2.0 - see [LICENSE](LICENSE) f
 
 ---
 
-## 🤝 Contributing
-
-Contributions welcome! This reference architecture demonstrates enterprise-grade AI security deployment patterns.
-
----
-
 ## 📚 Documentation
 
 - **[Local Setup Guide](LOCAL_SETUP.md)** - Detailed local deployment instructions
@@ -321,11 +338,3 @@ Contributions welcome! This reference architecture demonstrates enterprise-grade
 - **[Kubernetes Deployment](helm/airs-cp/README.md)** - Production K8s guide
 
 ---
-
-## 💬 Support
-
-For issues, questions, or enterprise support inquiries, please open a GitHub issue.
-
----
-
-**Built with ❤️ for enterprises that take AI security seriously.**
